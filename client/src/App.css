@@ -1,0 +1,109 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #222;
+  font-family: sans-serif;
+  background-color: #f0f4ff;
+}
+
+img {
+  max-width: 100%;
+}
+
+main {
+  padding: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  border: 1px solid rgb(213, 212, 212);
+  border-right: none;
+  border-left: none;
+  padding: 1rem 0;
+}
+
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header a.logo {
+  font-weight:  bold;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+header nav {
+  display: flex;
+  gap: 15px;
+}
+
+header nav button {
+  padding: .5rem 1rem;
+  border-radius: 10px;
+  color: black;
+  border: 1px solid gray;
+  outline: none;
+  background-color: transparent;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: .5s;
+}
+
+header nav button:hover {
+  background-color: gray;
+  color: white;
+}
+
+.posts .post {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 20px;
+  margin-bottom:  30px;
+}
+
+.posts .post .image {
+  height: 15rem;
+  background-color: red;
+}
+
+.posts .post .image img {
+  height: 100%;
+  width: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+
+.posts .post .texts h2 {
+  font-size: 1.8rem;
+}
+
+.posts .post p.info {
+  margin: 6px 0;
+  color: #888;
+  font-size: .7rem;
+  font-weight: bold;
+  display: flex;
+  gap: 10px;
+}
+
+.posts .post p.info a.author {
+  color: #333;
+}
+
+.posts .post p.summary {
+  margin: 10px 0;
+  line-height: 1.4rem;
+}
