@@ -106,6 +106,7 @@ header nav button:hover {
 .post p.summary {
   margin: 10px 0;
   line-height: 1.4rem;
+  color: rgb(79, 78, 78);
 }
 
 form.login, form.register {
@@ -136,4 +137,34 @@ button {
 form h1 {
   text-align: center;
   margin-bottom: 1rem;
+}
+
+/* Styles for small devices (phones) */
+@media only screen and (max-width: 700px) {
+  .post .texts h2 {
+    font-size: 1.4rem;
+  }
+
+  .post p.info {
+    font-size: .5rem;
+  }
+
+  .post p.summary {
+    font-size: .9rem;
+  }
+
+}
+
+@media only screen and (max-width: 570px) {
+  .post {
+    display: flex;
+    flex-direction: column;
+  }
+
+  header nav button {
+    padding: .3rem .7rem;
+    border-radius: 6px;
+    font-size: .9rem;
+  }
+
 }
