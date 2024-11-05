@@ -132,6 +132,7 @@ button {
   color: white;
   border-radius: 5px;
   padding: 7px 0;
+  cursor: pointer;
 }
 
 form h1 {

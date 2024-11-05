@@ -1,14 +1,64 @@
-import React from 'react'
+import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  return (
-    <form className='login'>
-        <h1>Login</h1>
-        <input required type="text" placeholder='Username' />
-        <input required type="password" name="" id="" placeholder='Password' />
-        <button>Login</button>
-    </form>
-  )
-}
+  const API = import.meta.env.VITE_API_URL;
+  const [loading, setLoading] = useState(false);
 
-export default Login
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const login = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+
+    const resp = await fetch(`${API}user/login`, {
+      method: 'POST',
+      body: JSON.stringify({username, password}),
+      headers: {"Content-Type": "application/json"},
+    });
+
+    const data = await resp.json();
+
+    if (data.success) {
+      Swal.fire({
+        title: data.message,
+        text: "Confirm!",
+        icon: 'success'
+      });
+      setUsername('');
+      setPassword('');
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: data.message,
+      });
+    }
+    setLoading(false);
+
+  }
+
+  return (
+    <form className="login" onSubmit={login}>
+      <h1>Login</h1>
+      <input
+        required
+        onChange={(e) => setUsername(e.target.value)}
+        value={username}
+        type="text"
+        placeholder="Username"
+      />
+      <input
+        required
+        onChange={(e) => setPassword(e.target.value)}
+        value={password}
+        type="password"
+        placeholder="Password"
+      />
+      <button>{loading ? 'Loading...' : 'Login'}</button>
+    </form>
+  );
+};
+
+export default Login;

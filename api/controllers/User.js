@@ -1,8 +1,52 @@
 const UserModel = require('../models/User');
 const bcryptjs = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv').config();
+
+// Create token
+const createToken = (username, id) => {
+    return jwt.sign({username, id}, process.env.JWT_SECRET_KEY);
+};
 
 const loginUser = async (req, res) => {
+    try {
+        const {username, password} = req.body;
+        const userExists = await UserModel.findOne({username});
 
+        // Check if user exists
+        if (!userExists) {
+            return res.json({
+                success: false,
+                message: 'User does not exist'
+            });
+        }
+
+        // Check if password matches user's password in db
+        const isMatch = await bcryptjs.compare(password, userExists.password);
+        if (!isMatch) {
+            return res.json({
+                success: false,
+                message: 'Invalid password',
+            });
+        }
+
+        const token = createToken(username, userExists._id);
+        // res.status(200).json({
+        //     success: true,
+        //     token,
+        // })
+        res.cookie('token', token, {httpOnly: true, security: true}).json({
+            success: true,
+            message: "Login successful",
+        });
+        
+    } catch (error) {
+        res.json({
+            success: false,
+            message: 'Server error',
+            error: error.message
+        });
+    }
 };
 
 const registerUser = async (req, res) => {

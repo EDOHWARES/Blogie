@@ -11,7 +11,7 @@ const Post = () => {
       <h2>Full-house battery backup coming later this year</h2>
       <p className="info">
         <a href="" className="author">Edoh Emmanuel</a>
-        <time datetime="">2024-11-03 22:54</time>
+        <time>2024-11-03 22:54</time>
       </p>
       <p className="summary">
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
