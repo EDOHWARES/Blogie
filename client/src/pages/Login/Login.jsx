@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import {Navigate} from 'react-router-dom';
 
 const Login = () => {
   const API = import.meta.env.VITE_API_URL;
   const [loading, setLoading] = useState(false);
+  const [redirect, setRedirect] = useState(false);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -16,6 +18,7 @@ const Login = () => {
       method: 'POST',
       body: JSON.stringify({username, password}),
       headers: {"Content-Type": "application/json"},
+      credentials: 'include',
     });
 
     const data = await resp.json();
@@ -28,6 +31,7 @@ const Login = () => {
       });
       setUsername('');
       setPassword('');
+      setRedirect(true);
     } else {
       Swal.fire({
         icon: "error",
@@ -36,8 +40,11 @@ const Login = () => {
       });
     }
     setLoading(false);
-
   }
+
+  if (redirect) {
+    return <Navigate to={'/'} />
+  };
 
   return (
     <form className="login" onSubmit={login}>

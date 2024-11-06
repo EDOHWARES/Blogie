@@ -3,14 +3,17 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const userRouter = require('./routes/User');
+const dotenv = require('dotenv').config();;
+const cookieParser = require('cookie-parser')
 
 // Declarations
 const port = 4000;
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({credentials: true, origin: process.env.CLIENT_URL }));
 app.use(express.json());
+app.use(cookieParser());
 
 // Database connection function
 connectDB();

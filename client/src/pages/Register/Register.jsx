@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import { Navigate } from "react-router-dom";
 
 const Register = () => {
   const API = import.meta.env.VITE_API_URL;
   const [loading, setLoading] = useState(false);
+  const [redirect, setRedirect] = useState(false);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -28,6 +30,7 @@ const Register = () => {
       });
       setUsername("");
       setPassword("");
+      setRedirect(true);
     } else {
       Swal.fire({
         icon: "error",
@@ -37,6 +40,10 @@ const Register = () => {
     }
     setLoading(false);
   };
+
+  if (redirect) {
+    return <Navigate to={'/login'} />
+  }
 
   return (
     <form className="register" onSubmit={register}>

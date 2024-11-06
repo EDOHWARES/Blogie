@@ -39,7 +39,7 @@ const loginUser = async (req, res) => {
             success: true,
             message: "Login successful",
         });
-        
+
     } catch (error) {
         res.json({
             success: false,
@@ -93,7 +93,18 @@ const registerUser = async (req, res) => {
     }
 };
 
+const userProfile = async (req, res) => {
+    // Retrieve cookies, verify and retrieve details
+    const {token} = req.cookies;
+    jwt.verify(token, process.env.JWT_SECRET_KEY, {}, (err, info) => {
+       if (err) throw err;
+
+       res.json(info);
+    })
+}
+
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    userProfile
 };
