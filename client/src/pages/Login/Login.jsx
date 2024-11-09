@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import {Navigate} from 'react-router-dom';
+import { UserContext } from "../../context/UserContext";
 
 const Login = () => {
   const API = import.meta.env.VITE_API_URL;
@@ -9,6 +10,8 @@ const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const {setUserInfo} = useContext(UserContext);
 
   const login = async (e) => {
     setLoading(true);
@@ -31,6 +34,7 @@ const Login = () => {
       });
       setUsername('');
       setPassword('');
+      setUserInfo(data);
       setRedirect(true);
     } else {
       Swal.fire({

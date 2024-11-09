@@ -3,8 +3,9 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const userRouter = require('./routes/User');
-const dotenv = require('dotenv').config();;
+const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser')
+dotenv.config();
 
 // Declarations
 const port = 4000;

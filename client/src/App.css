@@ -67,6 +67,12 @@ header nav button:hover {
   color: white;
 }
 
+.username {
+  font-size: 14px;
+  color: gray;
+  font-style: italic;
+}
+
 .post {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -76,7 +82,6 @@ header nav button:hover {
 
 .post .image {
   height: 15rem;
-  background-color: red;
 }
 
 .post .image img {
