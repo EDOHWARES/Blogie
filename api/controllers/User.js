@@ -1,7 +1,10 @@
 const UserModel = require("../models/User");
+const PostModel = require('../models/Post');
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const fs = require('fs');
 const dotenv = require("dotenv").config();
+
 
 // Create token
 const createToken = (username, id) => {
@@ -36,7 +39,7 @@ const loginUser = async (req, res) => {
       .cookie("token", token, {
         httpOnly: true,
         sameSite: "None",
-        secure: false,
+        secure: true,
       })
       .json({
         success: true,
@@ -139,9 +142,49 @@ const logoutUser = async (req, res) => {
     }
 };
 
+const post = async (req, res) => {
+  try {
+    const {title, summary, content} = req.body;
+
+    const postExists = await PostModel.findOne({title});
+    if (postExists) {
+      return res.json({
+        success: false,
+        message: 'Post already exists!'
+      })
+    };
+
+    const {originalname, path} = req.file;
+    const parts = originalname.split('.');
+    const ext = parts[parts.length-1];
+    const newPath = path+'.'+ext;
+    fs.renameSync(path, newPath);
+
+    const newPost = new PostModel({
+      title, 
+      summary,
+      file: newPath,
+      content
+    });
+    const post = await newPost.save();
+
+    return res.json({
+      success: true,
+      message: 'Post successfully created'
+    })
+  } catch (error) {
+    res.json({
+      success: false,
+      message: 'Server Error',
+      error: error.message
+    })
+  }
+};
+
 module.exports = {
   registerUser,
   loginUser,
   userProfile,
   logoutUser,
+  post,
 };

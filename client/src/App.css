@@ -140,7 +140,7 @@ button {
   cursor: pointer;
 }
 
-form h1 {
+form.login h1, form.register h1 {
   text-align: center;
   margin-bottom: 1rem;
 }

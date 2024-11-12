@@ -7,6 +7,7 @@ import Layout from "./components/Layout/Layout";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import CreatePost from "./pages/CreatePost/CreatePost";
 
 const App = () => {
   return (
@@ -16,10 +17,11 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/create" element={<CreatePost />} />
         </Route>
       </Routes>
     </UserContextProvider>
-  );
+  ); 
 };
 
 export default App;
