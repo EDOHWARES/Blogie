@@ -55,16 +55,16 @@ const Header = () => {
         <nav>
           {username ? (
             <>
-              <Link to={"/create"}>Create new post</Link>
-              <a onClick={logout}>Logout</a>
+              <Link className="btn" to={"/create"}>Create new post</Link>
+              <a className="btn" style={{cursor: 'pointer'}} onClick={logout}>Logout</a>
             </>
           ) : (
             <>
               <Link to={"/login"}>
-                <button>Login</button>
+                <button className="btn">Login</button>
               </Link>
               <Link to={"/register"}>
-                <button>Register</button>
+                <button className="btn">Register</button>
               </Link>
             </>
           )}

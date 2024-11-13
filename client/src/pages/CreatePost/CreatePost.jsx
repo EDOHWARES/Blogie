@@ -65,7 +65,11 @@ const CreatePost = () => {
       setRedirect(true);
     } else {
       setLoading(false);
-      Swal.fire(data.message);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: data.message,
+      });
     }
   };
 

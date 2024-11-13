@@ -1,7 +1,8 @@
 // Imports
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('./config/db');
+const connectDB = require('./config/db'); 
+const path = require('path');
 const userRouter = require('./routes/User');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser')
@@ -15,6 +16,7 @@ const app = express();
 app.use(cors({credentials: true, origin: process.env.CLIENT_URL }));
 app.use(express.json());
 app.use(cookieParser());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Database connection function
 connectDB();

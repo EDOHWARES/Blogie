@@ -1,23 +1,24 @@
 import React from 'react';
-import img1 from '../../assets/img1.jpg';
+import {formatISO9075} from 'date-fns';
 
-const Post = () => {
+const Post = ({title, summary, img, content, date, author}) => {
+  const API = import.meta.env.VITE_API_URL;
+  const baseAPI = API.replace('api/', '');
+  console.log(baseAPI);
+
   return (
     <div className="post">
     <div className="image">
-      <img src={img1} alt="post image" />
+      <img src={`${baseAPI}${img}`} alt="post image" />
     </div>
     <div className="texts">
-      <h2>Full-house battery backup coming later this year</h2>
+      <h2>{title}</h2>
       <p className="info">
-        <a href="" className="author">Edoh Emmanuel</a>
-        <time>2024-11-03 22:54</time>
+        <a href="" className="author">{author}</a>
+        <time>{formatISO9075(new Date(date))}</time>
       </p>
       <p className="summary">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Consequuntur dicta pariatur possimus omnis accusantium inventore
-        temporibus officia, aperiam aut quisquam ad quidem officiis illum
-        corporis minus culpa unde! Molestias, excepturi?
+        {summary}
       </p>
     </div>
   </div>
