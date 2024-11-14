@@ -10,6 +10,11 @@ body {
   background-color: #f0f4ff;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 img {
   max-width: 100%;
 }

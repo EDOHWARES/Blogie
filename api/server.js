@@ -5,7 +5,8 @@ const connectDB = require('./config/db');
 const path = require('path');
 const userRouter = require('./routes/User');
 const dotenv = require('dotenv');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const postRouter = require('./routes/Post');
 dotenv.config();
 
 // Declarations
@@ -23,6 +24,7 @@ connectDB();
 
 // Endpoints
 app.use('/api/user', userRouter);
+app.use('/api/post', postRouter);
 app.get('/', (req, res) => {
     res.json('api working...');
 });

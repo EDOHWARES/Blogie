@@ -51,7 +51,7 @@ const CreatePost = () => {
     form.set("file", files[0]);
     form.set("content", content);
 
-    const response = await fetch(`${API}user/post`, {
+    const response = await fetch(`${API}post/`, {
       method: 'POST',
       credentials: 'include',
       body: form

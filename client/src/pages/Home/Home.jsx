@@ -7,7 +7,7 @@ const Home = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch(`${API}user/posts`, {
+        const response = await fetch(`${API}post/posts`, {
           method: 'GET',
           credentials: 'include'
         });
@@ -19,12 +19,14 @@ const Home = () => {
     };
     fetchPosts();
   }, []);
+
   return (
     <>
       {
         posts.length > 0 && posts.map(post=> (
           <Post
             key={post['_id']}
+            id={post['_id']}
             title={post['title']}
             img={post['file']}
             summary={post['summary']}
