@@ -166,6 +166,42 @@ form.login h1, form.register h1 {
   margin-bottom: 1rem;
 }
 
+div.post-page div.image {
+  max-height: 200px;
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+div.post-page div.image img {
+  object-fit: cover;
+  object-position: center center;
+}
+
+div.post-page a {
+  color: #333;
+  text-decoration: underline;
+}
+
+div.post-page h1 {
+  text-align: center;
+  margin: 10px 0 5px;
+}
+
+div.post-page time {
+  text-align: center;
+  display: block;
+  font-size: 0.7rem;
+  color: #aaa;
+}
+
+div.post-page p.author {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: .7rem;
+  font-weight: bold;
+}
+
 /* Styles for small devices (phones) */
 @media only screen and (max-width: 700px) {
   .post .texts h2 {
