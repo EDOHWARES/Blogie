@@ -50,7 +50,7 @@ const Header = () => {
           <span>
             <img src={logo} alt="logo img" />
           </span>
-          <span>Blogie</span>
+          <span>logie</span>
         </Link>
         <nav>
           {username ? (

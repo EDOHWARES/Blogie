@@ -25,6 +25,10 @@ main {
   margin: 0 auto;
 }
 
+.contentt p {
+  line-height: 1.6rem;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -204,6 +208,29 @@ div.post-page p.author {
   margin-bottom: 20px;
   font-size: .7rem;
   font-weight: bold;
+}
+
+div.edit-row {
+  line-height: 1.6rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+div.post-page a.edit-btn {
+  background-color: #333;
+  color: white;
+  padding: 15px 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+div.post-page a.edit-btn svg {
+  height: 20px;
 }
 
 /* Styles for small devices (phones) */

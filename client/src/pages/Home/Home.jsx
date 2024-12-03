@@ -4,7 +4,6 @@ import { PropagateLoader } from "react-spinners";
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
-  console.log(loading);
   const API = import.meta.env.VITE_API_URL;
   const [posts, setPosts] = useState([]);
   useEffect(() => {
@@ -48,7 +47,7 @@ const Home = () => {
   }
 
   return (
-    <>
+    <section>
       {posts.length > 0 &&
         posts.map((post) => (
           <Post
@@ -62,7 +61,7 @@ const Home = () => {
             author={post["author"]}
           />
         ))}
-    </>
+    </section>
   );
 };
 

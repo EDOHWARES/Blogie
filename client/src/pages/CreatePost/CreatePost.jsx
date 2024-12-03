@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
 import Swal from "sweetalert2";
 import { Navigate } from "react-router-dom";
+import Editor from '../../Editor';
 
 const modules = {
   toolbar: [
@@ -101,13 +101,9 @@ const CreatePost = () => {
         name='file'
         onChange={(e) => setFiles(e.target.files)}
       />
-      <ReactQuill
-        required
+      <Editor 
         value={content}
-        onChange={(newValue) => setContent(newValue)}
-        theme="snow"
-        modules={modules}
-        formats={formats}
+        onChange={setContent}
       />
 
       <button type="submit" style={{ marginTop: "5px", height: '3rem' }}>
