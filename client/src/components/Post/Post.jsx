@@ -2,7 +2,7 @@ import React from "react";
 import { formatISO9075 } from "date-fns";
 import { Link, useNavigate } from "react-router-dom";
 
-const Post = ({ id, title, summary, img, content, date, author }) => {
+const Post = ({ id, title, summary, img, date, author }) => {
   const navigate = useNavigate();
   const API = import.meta.env.VITE_API_URL;
   const baseAPI = API.replace("api/", "");
@@ -17,7 +17,7 @@ const Post = ({ id, title, summary, img, content, date, author }) => {
             <h2>{title}</h2>
             <p className="info">
               <a href="" className="author">
-                {author}
+                {author['username']}
               </a>
               <time>{formatISO9075(new Date(date))}</time>
             </p>

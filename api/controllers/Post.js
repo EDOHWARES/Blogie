@@ -1,5 +1,6 @@
 const PostModel = require('../models/Post');
 const fs = require('fs');
+const jwt = require('jsonwebtoken');
 
 const post = async (req, res) => {
   try {
@@ -24,7 +25,7 @@ const post = async (req, res) => {
     let author = "unknown"; // default to 'unknown' in case there's an issue
     try {
       const info = jwt.verify(token, process.env.JWT_SECRET_KEY);
-      author = info["username"]; // assuming the JWT contains 'username'
+      author = info; // assuming the JWT contains 'username'
     } catch (err) {
       console.log("JWT verification error:", err);
     }
@@ -49,6 +50,7 @@ const post = async (req, res) => {
       message: "Server Error",
       error: error.message,
     });
+    console.log(error);
   }
 };
 

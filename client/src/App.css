@@ -188,6 +188,10 @@ div.post-page h1 {
   margin: 10px 0 5px;
 }
 
+div.post-page div.content p {
+  line-height: 1.6rem;
+}
+
 div.post-page time {
   text-align: center;
   display: block;

@@ -83,6 +83,7 @@ const CreatePost = () => {
         required
         type="text"
         placeholder="Title"
+        maxLength={'70'}
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
@@ -90,6 +91,7 @@ const CreatePost = () => {
         required
         type="text"
         placeholder="Summary"
+        maxLength={'270'}
         value={summary}
         onChange={(e) => setSummary(e.target.value)}
       />

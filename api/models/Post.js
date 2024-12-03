@@ -5,7 +5,7 @@ const PostSchema = new mongoose.Schema({
     summary: {type: String, required: true},
     file: {type: String},
     content: {type: String, required: true},
-    author: {type: String, required: true}
+    author: {type: Object, required: true}
 }, {
     timestamps: true,
 });
